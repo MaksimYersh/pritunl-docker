@@ -23,11 +23,10 @@ jobs:
       -
         name: Set up Docker metadata for Alpine
         id: meta-alpine
-        uses: docker/metadata-action@v4
+        uses: |
+          docker/metadata-action@v4
         with:
-          images: |
-            ${{ github.repository }}
-            ghcr.io/${{ github.repository }}
+          images: ghcr.io/${{ github.repository }}
           tags: |
             type=raw,latest
 #            type=raw,${{ steps.getargs.outputs.version }}
