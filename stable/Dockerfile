@@ -44,9 +44,9 @@ RUN set -x \
     && go install github.com/pritunl/pritunl-web@latest \
     && cp /go/bin/* /usr/bin \
     && cd /tmp \
-    && curl -sSL https://github.com/MaksimYersh/pritunl/archive/refs/heads/master.tar.gz -o /tmp/${VERSION}.tar.gz \
-    && tar -zxf /tmp/${VERSION}.tar.gz \
-    && cd /tmp/pritunl-${VERSION} \
+    && curl -sSL https://github.com/MaksimYersh/pritunl/archive/refs/heads/master.tar.gz -o /tmp/master.tar.gz \
+    && tar -zxf /tmp/master.tar.gz \
+    && cd /tmp/pritunl-master \
     && sed -i \
         -e '/dataclasses==0.8/,+2d' \
         -e '/packaging==20.9/,+2d' \
