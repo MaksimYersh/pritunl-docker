@@ -5,12 +5,12 @@ ARG VCS_REF
 ARG VERSION
 
 LABEL \
-    org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
-    org.opencontainers.image.url="https://github.com/goofball222/pritunl" \
+    org.opencontainers.image.vendor="Maksim Yersh - m.yersh@gmail.com" \
+    org.opencontainers.image.url="https://github.com/MaksimYersh/pritunl-docker" \
     org.opencontainers.image.title="Pritunl Server" \
     org.opencontainers.image.description="Pritunl Server" \
     org.opencontainers.image.version=$VERSION \
-    org.opencontainers.image.source="https://github.com/goofball222/pritunl" \
+    org.opencontainers.image.source="https://github.com/MaksimYersh/pritunl-docker" \
     org.opencontainers.image.revision=$VCS_REF \
     org.opencontainers.image.created=$BUILD_DATE \
     org.opencontainers.image.licenses="Apache-2.0"
@@ -20,7 +20,7 @@ ENV \
     GOPATH="/go" \
     GOCACHE="/tmp/gocache" \
     GO111MODULE=on \
-    PRITUNL_OPTS= \
+    PRITUNL_OPTS="" \
     REVERSE_PROXY=false \
     WIREGUARD=false
 
@@ -44,7 +44,7 @@ RUN set -x \
     && go install github.com/pritunl/pritunl-web@latest \
     && cp /go/bin/* /usr/bin \
     && cd /tmp \
-    && curl -sSL https://github.com/pritunl/pritunl/archive/refs/tags/${VERSION}.tar.gz -o /tmp/${VERSION}.tar.gz \
+    && curl -sSL https://github.com/MaksimYersh/pritunl/archive/refs/heads/master.tar.gz -o /tmp/${VERSION}.tar.gz \
     && tar -zxf /tmp/${VERSION}.tar.gz \
     && cd /tmp/pritunl-${VERSION} \
     && sed -i \
